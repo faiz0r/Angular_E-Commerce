@@ -1,0 +1,44 @@
+<div class="card mb-4 box-shadow">
+  <img
+    class="card-img-top"
+    data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+    [alt]="productItem.name"
+    style="height: 225px; width: 100%; display: block"
+    [src]="productItem.imageUrl"
+    data-holder-rendered="true"
+  />
+  <div class="card-body">
+    <strong>{{ productItem.name }} </strong>
+    <i
+      *ngIf="addedToWishlist"
+      class="fas fa-heart"
+      (click)="handleRemoveFromWishlist()"
+    ></i>
+    <i
+      *ngIf="!addedToWishlist"
+      class="far fa-heart"
+      (click)="handleAddToWishlist()"
+    ></i>
+    <p class="card-text">{{ productItem.description | slice: 0:80 }}...</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-success product-btn"
+          (click)="handleAddToCart()"
+        >
+          <i class="fa fa-shopping-cart"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-primary product-btn"
+        >
+          <i class="far fa-eye"></i>
+        </button>
+      </div>
+      <small class="text-muted">{{
+        productItem.price | currency: "GBP"
+      }}</small>
+    </div>
+  </div>
+</div>
