@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,9 @@ import { ProductItemComponent } from './components/shopping-cart/product-list/pr
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { ShoppingBasketComponent } from './components/shopping-cart/cart/shopping-basket/shopping-basket.component';
+import { BasketItemComponent } from './components/shopping-cart/cart/shopping-basket/basket-item/basket-item.component';
+
 
 @NgModule({
   declarations: [
@@ -30,8 +34,16 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
+    ShoppingBasketComponent,
+    BasketItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

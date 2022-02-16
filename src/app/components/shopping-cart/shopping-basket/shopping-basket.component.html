@@ -1,0 +1,46 @@
+<div class="pt-5 text-center">
+  <img
+    class="d-block mx-auto mb-4"
+    src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
+    alt=""
+    width="72"
+    height="72"
+  />
+  <h2>Shopping Basket</h2>
+</div>
+
+<div class="row p-md-5">
+  <h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Your basket</span>
+    <span class="badge alert-secondary badge-pill">{{ cartQty }}</span>
+  </h4>
+  <div *ngIf="cartItems.length === 0" class="alert alert-info">
+    Your Basket is Empty
+  </div>
+  <ul *ngIf="cartItems.length > 0" class="list-group mb-3">
+    <li
+      class="list-group-item d-flex justify-content-between lh-condensed"
+      *ngFor="let item of cartItems"
+    >
+      <div>
+        <h6 class="my-0">{{ item.productName }}</h6>
+        <small class="text-muted">{{ item.qty }}</small>
+      </div>
+      <div>
+        <span class="text-muted">{{ item.price | currency: "GBP" }}</span><br>
+        <button
+          type="button"
+          class="btn btn-sm btn-danger"
+          (click)="removeCartItem(item)"
+        >
+        <i class="far fa-trash-alt"></i>
+        </button>
+      </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Total</span>
+      <strong>{{ cartTotal | currency: "GBP" }}</strong>
+    </li>
+  </ul>
+  <button class="btn btn-success btn-lg btn-block" type="submit">Continue to checkout</button>
+</div>
