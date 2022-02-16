@@ -2,6 +2,10 @@
   max-width: 960px;
 }
 
+.site-footer {
+  bottom: 0;
+}
+
 a {
   text-decoration: none;
 }

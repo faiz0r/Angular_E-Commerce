@@ -21,12 +21,14 @@
         ></path>
       </svg>
     </a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
+    <a class="py-2 d-none d-md-inline-block" [routerLink]="['/shop']">Shop</a>
     <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
     <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
     <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
     <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
-    <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+    <a class="py-2 d-none d-md-inline-block" [routerLink]="['/cart']">Cart</a>
+    <a class="py-2 d-none d-md-inline-block" [routerLink]="['/login']"
+      ><i class="fas fa-user-circle"></i
+    ></a>
   </nav>
 </header>
