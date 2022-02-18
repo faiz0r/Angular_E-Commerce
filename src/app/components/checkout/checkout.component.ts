@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item';
-import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
-  selector: 'app-shopping-basket',
-  templateUrl: './shopping-basket.component.html',
-  styleUrls: ['./shopping-basket.component.css'],
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
-export class ShoppingBasketComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
   cartItems = [];
-  cartTotal = 0;
+  total = 0;
   cartQty = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -22,14 +21,15 @@ export class ShoppingBasketComponent implements OnInit {
   loadCartItems() {
     this.cartService.getCartItems().subscribe((items: CartItem[]) => {
       this.cartItems = items;
-      this.calcCartQuantity();
+      this.calcCartTotal();
     });
   }
 
-  calcCartQuantity() {
-    this.cartQty = 0;
+  calcCartTotal() {
     this.cartItems.forEach((item) => {
+      this.total += item.price;
       this.cartQty += item.qty;
     });
   }
+
 }
