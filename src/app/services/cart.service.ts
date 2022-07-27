@@ -43,7 +43,6 @@ export class CartService {
   }
 
   removeProductFromCart(id: number): Observable<any> {
-    console.log(cartUrl + '/' + id);
     return this.http.delete(cartUrl + '/' + id);
   }
 }

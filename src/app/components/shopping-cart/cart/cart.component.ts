@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,8 +10,10 @@ import { MessengerService } from 'src/app/services/messenger.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  @Input() cartItemIsDeletable = false;
   cartItems = [];
   cartTotal = 0;
+  cartQty = 0;
 
   constructor(
     private msg: MessengerService,
@@ -33,6 +35,7 @@ export class CartComponent implements OnInit {
     this.cartService.getCartItems().subscribe((items: CartItem[]) => {
       this.cartItems = items;
       this.calcCartTotal();
+      this.calcCartQuantity();
     });
   }
 
@@ -40,6 +43,19 @@ export class CartComponent implements OnInit {
     this.cartTotal = 0;
     this.cartItems.forEach((item) => {
       this.cartTotal += item.qty * item.price;
+    });
+  }
+
+  removeCartItem(item) {
+    this.cartService.removeProductFromCart(item.id).subscribe(() => {
+      this.loadCartItems();
+    });
+   }
+
+   calcCartQuantity() {
+    this.cartQty = 0;
+    this.cartItems.forEach((item) => {
+      this.cartQty += item.qty;
     });
   }
 }
