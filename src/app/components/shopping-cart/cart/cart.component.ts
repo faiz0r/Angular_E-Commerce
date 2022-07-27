@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,6 +10,7 @@ import { MessengerService } from 'src/app/services/messenger.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  @Input() cartItemIsDeletable = false;
   cartItems = [];
   cartTotal = 0;
   cartQty = 0;

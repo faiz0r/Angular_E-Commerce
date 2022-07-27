@@ -1,14 +1,8 @@
 <div class="pt-5 text-center">
-  <img
-    class="d-block mx-auto mb-4"
-    src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
-    alt=""
-    width="72"
-    height="72"
-  />
-  <h2>Shopping Basket</h2>
+  <i class="fa-brands fa-jedi-order fa-4x"></i>
+  <h1>Flex Nation</h1>
 </div>
 
 <div class="row p-md-5">
-  <app-cart></app-cart>
+  <app-cart [cartItemIsDeletable]="isDeletable"></app-cart>
 </div>

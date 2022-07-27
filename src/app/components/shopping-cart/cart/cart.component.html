@@ -11,7 +11,7 @@
     *ngFor="let item of cartItems"
   >
     <app-cart-item [cartItem]="item"></app-cart-item>
-    <button
+    <button *ngIf="cartItemIsDeletable == true"
     type="button"
     class="btn btn-sm btn-danger"
     (click)="removeCartItem(item)"
@@ -20,7 +20,5 @@
   <li class="list-group-item active">
     <strong>Total: {{ cartTotal | currency: "GBP" }}</strong>
   </li>
+  <button *ngIf="cartItemIsDeletable == true" class="btn btn-success mt-4 btn-lg btn-block" type="submit" [routerLink]="['/checkout']">Continue to checkout</button>
 </ul>
-
-<button *ngIf="cartItems.length > 0" class="btn btn-success mt-4 btn-lg btn-block" type="submit" [routerLink]="['/checkout']">Continue to checkout</button>
-
